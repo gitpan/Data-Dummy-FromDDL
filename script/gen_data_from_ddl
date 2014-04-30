@@ -1,0 +1,105 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use Data::Dummy::FromDDL;
+use Data::Dummy::FromDDL::Util qw(
+    normalize_parser_str
+);
+use Pod::Usage;
+use Getopt::Long qw(:config posix_default no_ignore_case gnu_compat);
+
+my $n;
+my $out = '';
+my $parser = 'MySQL';
+my $help = 0;
+my $include = '';
+my $exclude = '';
+GetOptions(
+    "num|n=i" => \$n,
+    "help|h" => \$help,
+    "out|o=s" => \$out,
+    "parser|p=s" => \$parser,
+    "include|i=s" => \$include,
+    "exclude|e=s" => \$exclude,
+) or pod2usage(2);
+
+pod2usage(1)
+    if $help;
+pod2usage("Can't specify both of --include and --exclude options")
+    if $include && $exclude;
+
+# テーブルごとに異なる行数指定できるようにしたい
+# --num=20 => 全てのテーブル20行
+# --num=users:10,recipes:50,100 => usersテーブルは10行、recipesテーブルは50行、他は100行
+sub parser_num_option {
+    my $num_str = shift;
+}
+
+my $ddl = do {
+    local $/;
+    if (@ARGV) {
+        # read from multiple files
+        my $ddl_str = '';
+        for my $ddl_file (@ARGV) {
+            open my $fh, '<', $ddl_file
+                or die("Can't open $ddl_file to read\n");
+            $ddl_str .= <$fh>;
+        }
+        $ddl_str;
+    } else {
+        <STDIN>;
+    }
+};
+
+my $out_fh;
+if ($out) {
+    open $out_fh, '>', $out
+        or die("Can't open $out to write\n");
+} else {
+    $out_fh = *STDOUT;
+}
+
+$parser = normalize_parser_str($parser);
+
+my @include = split ',', $include;
+my @exclude = split ',', $exclude;
+
+my $d = Data::Dummy::FromDDL->new(
+    ddl => $ddl,
+    parser => $parser,
+    out_fh => $out_fh,
+    include => \@include,
+    exclude => \@exclude,
+);
+$d->generate($n);
+
+__END__
+
+=encoding utf-8
+
+=head1 NAME
+
+gen_data_from_ddl - Using Data::Dummy::DDL
+
+=head1 SYNOPSYS
+
+gen_data_from_ddl [options]
+
+ Options:
+   -h|--help
+
+=head1 OPTIONS
+
+=over 8
+
+=item B<-h | --help>
+
+Print help message and exits.
+
+=item B<-n | --num>
+
+Generate B<num> records.
+
+=cut

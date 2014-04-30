@@ -1,0 +1,44 @@
+---
+abstract: "It's new $module"
+author:
+  - 'Yuuki Furuyama <addsict@gmail.com>'
+build_requires:
+  Test::More: 0.98
+configure_requires:
+  CPAN::Meta: 0
+  CPAN::Meta::Prereqs: 0
+  Module::Build: 0.38
+dynamic_config: 0
+generated_by: 'Minilla/v0.14.1, CPAN::Meta::Converter version 2.120921'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Data-Dummy-FromDDL
+no_index:
+  directory:
+    - t
+    - xt
+    - inc
+    - share
+    - eg
+    - examples
+    - author
+    - builder
+provides:
+  Data::Dummy::FromDDL:
+    file: lib/Data/Dummy/FromDDL.pm
+    version: 0.01
+  Data::Dummy::FromDDL::Generator:
+    file: lib/Data/Dummy/FromDDL/Generator.pm
+    version: 0
+  Data::Dummy::FromDDL::Util:
+    file: lib/Data/Dummy/FromDDL/Util.pm
+    version: 0
+requires:
+  perl: 5.008005
+resources:
+  bugtracker: https://github.com/addsict/Data-Dummy-FromDDL/issues
+  homepage: https://github.com/addsict/Data-Dummy-FromDDL
+  repository: git://github.com/addsict/Data-Dummy-FromDDL.git
+version: 0.01

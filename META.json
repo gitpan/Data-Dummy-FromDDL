@@ -1,0 +1,80 @@
+{
+   "abstract" : "It's new $module",
+   "author" : [
+      "Yuuki Furuyama <addsict@gmail.com>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Minilla/v0.14.1",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Data-Dummy-FromDDL",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "xt",
+         "inc",
+         "share",
+         "eg",
+         "examples",
+         "author",
+         "builder"
+      ]
+   },
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "CPAN::Meta" : "0",
+            "CPAN::Meta::Prereqs" : "0",
+            "Module::Build" : "0.38"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Test::CPAN::Meta" : "0",
+            "Test::MinimumVersion::Fast" : "0.04",
+            "Test::PAUSE::Permissions" : "0.04",
+            "Test::Pod" : "1.41",
+            "Test::Spellunker" : "v0.2.7"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "perl" : "5.008005"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::More" : "0.98"
+         }
+      }
+   },
+   "provides" : {
+      "Data::Dummy::FromDDL" : {
+         "file" : "lib/Data/Dummy/FromDDL.pm",
+         "version" : "0.01"
+      },
+      "Data::Dummy::FromDDL::Generator" : {
+         "file" : "lib/Data/Dummy/FromDDL/Generator.pm"
+      },
+      "Data::Dummy::FromDDL::Util" : {
+         "file" : "lib/Data/Dummy/FromDDL/Util.pm"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/addsict/Data-Dummy-FromDDL/issues"
+      },
+      "homepage" : "https://github.com/addsict/Data-Dummy-FromDDL",
+      "repository" : {
+         "url" : "git://github.com/addsict/Data-Dummy-FromDDL.git",
+         "web" : "https://github.com/addsict/Data-Dummy-FromDDL"
+      }
+   },
+   "version" : "0.01"
+}

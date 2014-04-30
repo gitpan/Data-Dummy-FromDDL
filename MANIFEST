@@ -1,0 +1,16 @@
+Build.PL
+Changes
+LICENSE
+META.json
+README.md
+cpanfile
+ddl.sql
+lib/Data/Dummy/FromDDL.pm
+lib/Data/Dummy/FromDDL/Generator.pm
+lib/Data/Dummy/FromDDL/Util.pm
+minil.toml
+script/gen_data_from_ddl
+t/00_compile.t
+test.pl
+META.yml
+MANIFEST
